@@ -1,0 +1,17 @@
+group 'com.yaegar.qutana'
+version '1.0.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+apply from: 'dependencies.gradle'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.2.1'
+}
