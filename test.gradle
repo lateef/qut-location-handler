@@ -1,3 +1,4 @@
+// IntegrationTest.................
 sourceSets {
     integrationTest {
         java {
@@ -38,4 +39,20 @@ tasks.withType(Test) {
 
 integrationTest {
     testLogging.showStandardStreams = true
+}
+
+// DynamoDBLocal...............
+task copyNativeDeps(type: Copy) {
+    from (configurations.testCompile) {
+        include "*.dylib"
+        include "*.so"
+        include "*.dll"
+    }
+    into 'build/libs'
+}
+
+test.dependsOn copyNativeDeps
+test.doFirst {
+    systemProperty 'java.library.path', 'build/libs'
+    systemProperty 'sqlite4java.library.path', 'build/libs'
 }

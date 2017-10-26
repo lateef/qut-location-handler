@@ -6,21 +6,24 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
 @DynamoDBTable(tableName = "Location")
 public class Location {
-    private final String id;
-    private final String area;
-
-    public Location(String id, String area) {
-        this.id = id;
-        this.area = area;
-    }
+    private String id;
+    private String area;
 
     @DynamoDBHashKey
     public String getId() {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     @DynamoDBRangeKey
     public String getArea() {
         return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
     }
 }

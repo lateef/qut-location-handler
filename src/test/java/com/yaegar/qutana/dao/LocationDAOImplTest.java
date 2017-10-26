@@ -29,7 +29,9 @@ public class LocationDAOImplTest {
         //arrange
         String id = UUID.randomUUID().toString();
         String area = "Glasgow";
-        Location location = new Location(id, area);
+        Location location = new Location();
+        location.setId(id);
+        location.setArea(area);
         doNothing().when(dynamoDBMapper).save(location);
 
         //act
