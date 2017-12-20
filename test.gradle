@@ -42,6 +42,7 @@ integrationTest {
 }
 
 // DynamoDBLocal...............
+// https://stackoverflow.com/questions/34401039/run-dynamodb-local-as-part-of-a-gradle-java-project
 task copyNativeDeps(type: Copy) {
     from (configurations.testCompile) {
         include "*.dylib"
